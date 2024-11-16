@@ -11,22 +11,6 @@ Welcome to my **CTF Writeups** repository! This repository contains detailed wri
 **Category:** Web, Cryptography, Reverse Engineering, AI Exploit, Steganography, Forensics 
 A detailed writeup of the challenges I solved during **EKOCTF'24**.  
 
-#### Challenges Solved in EKO CTF'24:
-- **Delta** 💥
-- **EKOGPT#1** 🤖
-- **EKOGPT#2** 🤖
-- **EKOGPT#3** 🤖
-- **EKOGPT#4** 🤖
-- **EKOGPT#5** 🤖
-- **EKOGPT#6** 🤖
-- **Hidden** 🔍
-- **Meta** 🌐
-- **Safe-U** 🛡️
-- **Spammer** 💬
-- **Spider** 🕷️
-- **Telecom** 📱
-- **Toretto** 🚗
-
 ---
 
 ## 📝 List of Writeups
