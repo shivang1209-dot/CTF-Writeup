@@ -4,18 +4,9 @@ Welcome to my **CTF Writeups** repository! This repository contains detailed wri
 
 ---
 
-## 🎯 CTF Challenges
-
-### 1. **EKOCTF'24** 🏆
-[Link to writeup](https://github.com/shivang1209-dot/CTF-Writeup/tree/main/EKO%20CTF'24)  
-**Category:** Web, Cryptography, Reverse Engineering, AI Exploit, Steganography, Forensics 
-A detailed writeup of the challenges I solved during **EKOCTF'24**.  
-
----
-
 ## 📝 List of Writeups
 
-- [EKOCTF'24](#)
+- [EKOCTF'24](https://github.com/shivang1209-dot/CTF-Writeup/tree/main/EKO%20CTF'24)
 
 ---
 
