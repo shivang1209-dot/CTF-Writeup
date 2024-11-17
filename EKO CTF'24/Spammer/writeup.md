@@ -17,7 +17,7 @@ While going through all my email folders, I came across a message that seems to 
 
 1. **Extracting the Files**: Upon unzipping the `spammer.zip` file, we found a file named `spammer.txt`.
 
-   File: ![](Resources/spammer.txt)
+   File: [spammer.txt](Resources/spammer.txt)
 
 2. **Recognizing the Pattern**: The text in the `spammer.txt` file seemed familiar—it was a message that appeared to be encoded in a format commonly used on the website **[spammimic.com](https://www.spammimic.com/)**, a platform known for its decoding tool.
 
