@@ -1,5 +1,5 @@
 ## **Challenge Name: Safe-U**  
-**Category**: Misc  
+**Category**: OSINT/Misc
 **Points**: 306
 **Solves**: 118
 
@@ -94,7 +94,7 @@ It begins in the account of **X**, where **Hernan_Eko20** has left a trail of en
 - Revealed the flag.  
 
   **Screenshot of Flag Extraction:**  
-  ![Flag Extraction Screenshot](Resources/.privado/rockyou.jpg)
+  ![Flag Extraction Screenshot](Resources/privado/rockyou.jpg)
 
 ---
 
