@@ -1,6 +1,9 @@
 ## **Challenge Name: Safe-U**  
+
 **Category**: OSINT/Misc
+
 **Points**: 306
+
 **Solves**: 118
 
 ---
