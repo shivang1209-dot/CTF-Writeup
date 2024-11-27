@@ -1,4 +1,4 @@
-## **Challenge Name: Slithering Security**
+## **Challenge Name: Admin Portal**
 ### **Solves**
 - **Solves**: 280
 - **Points**: 150  
