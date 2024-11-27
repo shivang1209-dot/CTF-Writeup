@@ -1,7 +1,3 @@
-Certainly! Below is the updated writeup for the **Private GitHub Repository** challenge, retaining the images and resources:
-
----
-
 ## **Challenge Name: Private GitHub Repository**
 
 ### **Solves**
