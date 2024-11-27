@@ -1,7 +1,3 @@
-Certainly! Here's the detailed, step-by-step writeup for the **Steg64** challenge:
-
----
-
 ## **Challenge Name: Steg64**
 
 ### **Solves**

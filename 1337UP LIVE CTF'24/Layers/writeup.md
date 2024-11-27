@@ -1,7 +1,3 @@
-Here’s the writeup for the **Layers** challenge:
-
----
-
 ## **Challenge Name: Layers**
 
 ### **Solves**
