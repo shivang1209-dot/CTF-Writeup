@@ -9,7 +9,7 @@
 
 A cryptic data file has surfaced, carrying hidden information that once belonged elsewhere. Only by understanding its origin can you recover the secret it holds. Will you be able to decipher its true meaning and uncover the flag?
 
-**File provided**: [](Resources/delta.zip)
+**File provided**: [delta.zip](Resources/delta.zip)
 
 ---
 
