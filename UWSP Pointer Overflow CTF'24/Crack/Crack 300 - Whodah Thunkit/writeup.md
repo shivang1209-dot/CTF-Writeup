@@ -1,7 +1,3 @@
-Here's the detailed write-up for the **Crack 300 - Whodah Thunkit** challenge:
-
----
-
 ## **Challenge Name: Crack 300 - Whodah Thunkit**
 
 ### **Description**
