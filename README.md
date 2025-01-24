@@ -7,13 +7,13 @@ Welcome to my **CTF Writeups** repository! This repository contains detailed wri
 ## 📝 List of Writeups
 
 - [EKOCTF'24](https://github.com/shivang1209-dot/CTF-Writeup/tree/main/EKO%20CTF'24)
-
+- [POCTF'24](https://github.com/shivang1209-dot/CTF-Writeup/tree/main/UWSP%20Pointer%20Overflow%20CTF'24)
 ---
 
 ## 🏅 Badges
 
-![badge-1](https://img.shields.io/badge/CTF_Completed-20-brightgreen)  
-![badge-2](https://img.shields.io/badge/Writeups-1-blue)
+![badge-1](https://img.shields.io/badge/CTF_Completed-25-brightgreen)  
+![badge-2](https://img.shields.io/badge/Writeups-4-blue)
 
 ---
 
@@ -39,5 +39,16 @@ Here is the folder structure for the writeups:
 │   ├── /Spider
 │   ├── /Telecom
 │   └── /Toretto
-│
+|
+├── /POCTF 2024
+│   ├── /Crack
+│   ├── /Crypto
+│   ├── /Exploit
+│   ├── /Forensics
+│   ├── /Misc
+│   ├── /OSINT
+│   ├── /Reverse
+│   ├── /Stego
+│   ├── /Web
+|
 └── README.md
