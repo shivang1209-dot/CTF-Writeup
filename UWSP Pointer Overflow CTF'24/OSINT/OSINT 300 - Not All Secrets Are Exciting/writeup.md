@@ -26,9 +26,7 @@ Add a dash (-) to separate the next part, which is the street number and five-di
 ### **Approach**  
 
 #### **Step 1: Identifying the Cat's Name**  
-- Analyzed the first image:  
-
-  ![image1.png](Resources/image1.png)  
+- Analyzed the first image:   
 
 - Reverse image search identified the person as **Yuri Knorozov**, a prominent scholar.  
 - His cat’s full name is **Aspid**. *(Note: "Asya" is its nickname.)*  
@@ -38,7 +36,7 @@ Add a dash (-) to separate the next part, which is the street number and five-di
 #### **Step 2: Identifying the Artist**  
 - Conducted a reverse image search on the second image:  
 
-  ![image2.png](Resources/image2.png)  
+  ![image1.png](Resources/image1.png) 
 
 - Found a Reddit thread mentioning the artist as **Jeff Galewood**.  
 - The last name for the password is **Galewood**.  
@@ -47,11 +45,11 @@ Add a dash (-) to separate the next part, which is the street number and five-di
 
 #### **Step 3: Locating the Address**  
 - Examined the third image and identified location clues. The placard mentions **New York**, while a notebook nearby includes **Las Vegas**.  
-
-  ![image3.png](Resources/image3.png)  
+  ![image2.png](Resources/image2.png)  
 
 - Searched for matching landmarks and identified the location as **3790 S Las Vegas Blvd, Las Vegas, NV 89109**.  
   - From this address, the password part is **379089109**.  
+  ![image3.png](Resources/image3.png) 
 
 ---
 
