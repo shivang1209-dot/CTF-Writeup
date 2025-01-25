@@ -16,7 +16,7 @@ Add a dash (-) to separate the next part, which is the last name of the artist t
 
 Add a dash (-) to separate the next part, which is the street number and five-digit zip code of the building where this picture was taken. For example, if the address is 1234 Main St. Nowhere, US 54321-4321 the solution would be 123454321.  
 
-[OSINT300-3_3.jpg](Resources/OSINT300-3_3.jpg)  
+![OSINT300-3_3.jpg](Resources/OSINT300-3_3.jpg)  
 
 #### **File Provided**  
 - [OSINT300-3](Resources/OSINT300-3)  
