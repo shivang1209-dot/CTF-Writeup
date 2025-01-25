@@ -1,4 +1,4 @@
-## **Challenge Name: OSINT 100-2 - Novel Means of Lying**
+## **Challenge Name: OSINT 100 - Novel Means of Lying**
 
 ---
 
