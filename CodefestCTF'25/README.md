@@ -5,7 +5,7 @@ This CTF was organized by **IIT BHU** (Indian Institute of Technology, Banaras H
 
 ## Repo Structure
 
-This repository contains the writeups for **9 OSINT challenges** I attempted during the CodefestCTF 2025 competition. Each challenge has its own folder, and inside each folder, you will find:
+This repository contains the writeups for **challenges** I attempted during the CodefestCTF 2025 competition. Each challenge has its own folder, and inside each folder, you will find:
 - A **writeup** in markdown format explaining how the challenge was solved.
 - Any relevant **images** and **resources** used during the investigation.
 - **Flag(s)** found from the challenge.
