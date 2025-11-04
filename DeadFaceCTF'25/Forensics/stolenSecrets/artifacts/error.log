@@ -1,0 +1,2 @@
+
+2025/07/21 14:14:20 [error] 29#29: *16947 upstream timed out (110: Operation timed out) while reading response header from upstream, client: 134.199.202.160, server: _, request: "POST /uploads/info.php HTTP/1.1", upstream: "fastcgi://192.168.112.3:9000", host: "files.techglobalresearch.com", referrer: "http://files.techglobalresearch.com/uploads/info.php"

