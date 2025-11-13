@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tomb of Pharaoh Dave Ramesses</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+  </head>
+
+  <body>
+    <canvas id="sand-canvas" aria-hidden="true"></canvas>
+      <div class="content">
+        <img
+          src="{{ url_for('static', filename='dave_ramesses.png') }}"
+          alt="Pharaoh Dave Ramesses"
+        />
+        <h1 id="tomb-heading">Do you dare enter the tomb of Pharaoh Dave Ramesses?</h1>
+        <form method="POST" class="login-form">
+          <div class="input-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Enter your name"
+            />
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="Enter the secret password"
+            />
+          </div>
+          <button class="button" type="submit">Enter the Tomb</button>
+        </form>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='sand.js') }}" defer></script>
+  </body>
+</html>

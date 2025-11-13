@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="ProfessorTheme_Loud">
+  <a:themeElements>
+    <a:clrScheme name="CustomLoud">
+      <a:dk1><a:srgbClr val="1F1F1F"/></a:dk1>
+      <a:lt1><a:srgbClr val="FFFFFF"/></a:lt1>
+      <a:dk2><a:srgbClr val="2B2B2B"/></a:dk2>
+      <a:lt2><a:srgbClr val="F4F4F4"/></a:lt2>
+
+      <a:accent1><a:srgbClr val="FF4500"/></a:accent1>  <!-- vivid orange -->
+      <a:accent2><a:srgbClr val="0066CC"/></a:accent2>  <!-- strong blue -->
+      <a:accent3><a:srgbClr val="8A2BE2"/></a:accent3>  <!-- bright purple -->
+      <a:accent4><a:srgbClr val="228B22"/></a:accent4>  <!-- strong green -->
+      <a:accent5><a:srgbClr val="FFD700"/></a:accent5>  <!-- gold -->
+      <a:accent6><a:srgbClr val="DC143C"/></a:accent6>  <!-- crimson -->
+      <!-- bctf{docx_is_zip} -->
+
+      <a:hlink><a:srgbClr val="0000FF"/></a:hlink>
+      <a:folHlink><a:srgbClr val="800080"/></a:folHlink>
+    </a:clrScheme>
+
+    <a:fmtScheme name="CustomFmt">
+
+      <a:fillStyleLst>
+        <a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill>
+      </a:fillStyleLst>
+      <a:lnStyleLst/>
+      <a:effectStyleLst/>
+    </a:fmtScheme>
+  </a:themeElements>
+
+  <a:objectDefaults/>
+  <a:extraClrSchemeLst/>
+</a:theme>

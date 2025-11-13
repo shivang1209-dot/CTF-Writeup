@@ -1,0 +1,157 @@
+{% from 'bootstrap5/nav.html' import render_nav_item %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>AUTHMAN</title>
+        {{ bootstrap.load_css() }}
+
+        <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        
+        <style>
+            pre {
+                background: #ddd;
+                padding: 10px;
+            }
+            h2 {
+                margin-top: 20px;
+            }
+            footer {
+                margin: 20px;
+            }
+
+            .speech-bubble {
+                position: relative;
+                background: #ffffff;
+                border: 4px solid #000000;
+                border-radius: 30px;
+                padding: 24px;
+                max-width: 300px;
+                font-family: 'Comic Neue', cursive;
+                font-size: 1.5rem;
+                line-height: 2rem;
+                font-weight: 700;
+                text-align: center;
+                box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+            }
+
+            .speech-bubble:before, .speech-bubble:after {
+                content: "";
+                position: absolute;
+                bottom: -24px;
+                left: 75%; 
+                transform: translateX(-50%);
+                border-style: solid;
+            }
+
+            .speech-bubble:before {
+                border-width: 24px 16px 0 16px;
+                border-color: #000000 transparent transparent transparent;
+                z-index: 0;
+                bottom: -28px; 
+            }
+            
+            .speech-bubble:after {
+                border-width: 18px 12px 0 12px; 
+                border-color: #ffffff transparent transparent transparent;
+                z-index: 1;
+                bottom: -24px;
+            }
+            .status-up {
+                color: #28a745; 
+            }
+
+            .status-down {
+                color: #dc3545; 
+            }
+
+            #mascot-container {
+                transition: transform 0.2s ease-out;
+                will-change: transform;
+            }
+
+            #mascot-container:hover {
+                transform: translateY(-12px);
+                cursor: pointer;
+            }
+
+            #mascot-container:hover #mascot {
+                filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.7)) brightness(1.15);
+            }
+
+            #mascot {
+                transition: filter 0.2s ease-out; 
+                will-change: filter; 
+                max-width: 192px; 
+            }
+            @media (min-width: 640px) {
+                #mascot {
+                    max-width: 256px; 
+                }
+            }
+
+            #mascot:hover {
+
+            }
+
+            @keyframes typing {
+                from { width: 0; }
+                to { width: 100%; }
+            }
+
+            @keyframes blink-caret {
+                from, to { border-color: transparent; }
+                50% { border-color: currentColor; }
+            }
+
+            .typing-effect {
+                overflow: hidden; 
+                white-space: nowrap;
+                border-right: .15em solid; 
+                animation:
+                    typing 2s steps(22, end) forwards,
+                    blink-caret .75s step-end infinite;
+                width: 0; 
+                display: inline-block; 
+            }
+
+        </style>
+        {% block styles %}{% endblock %}
+    </head>
+    <body>
+        {{ bootstrap.load_js() }}
+
+        {% block body_content %}
+            <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+                <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        {{ render_nav_item('index', 'Home') }}
+                        {{ render_nav_item('auth', 'Authenticate') }}
+                    </ul>
+                </div>
+                </div>
+            </nav>
+            <main class="container" style="min-height:100vh">
+                {% if error is defined %}
+                    <h3 style="color:red">Error: {{error}}</h3>
+                {% endif %}
+                {% block content %}{% endblock %}
+            </main>
+        
+            <footer class="text-center">
+                {% block footer %}
+                    <small> &copy; 2025-<script>document.write(new Date().getFullYear())</script> <a href="https://corgi.rip/">Jorgo Jog</a>
+                    </small>
+                {% endblock %}
+            </footer>
+        {% endblock %}
+
+        {% block scripts %}{% endblock %} 
+    </body>
+</html>

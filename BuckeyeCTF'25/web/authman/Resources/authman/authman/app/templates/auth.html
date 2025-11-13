@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<style>
+    body {
+        background-image: url("{{ url_for('static', filename='background.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #f0f4f8; 
+        font-family: 'Inter', sans-serif;
+        
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        
+        padding: 1rem; 
+    }
+    .speech-bubble {
+        max-width: none;
+        width: clamp(350px, 35vw, 650px);
+        font-size: clamp(1.75rem, 2.5vw, 2.75rem);
+        line-height: clamp(2.25rem, 3vw, 3.25rem);
+    }
+
+    #mascot {
+        width: clamp(220px, 25vw, 480px);
+        max-width: none;
+    }
+
+    @media (min-width: 640px) {
+        #mascot {
+            max-width: none; 
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body_content %}
+    <main class="flex-grow">
+    </main>
+
+    <footer class="flex-shrink-0 flex justify-center pb-4">
+        <div id="mascot-container" class="flex flex-col items-center">
+            <div class="speech-bubble mb-[-12px] z-20">
+                <div class="text-xl sm:text-2xl mb-2" style="font-family: 'Comic Neue', cursive;">
+                    Nice work!
+                </div>
+                <div id="status-container" class="min-h-[2rem]">
+                </div>
+
+            </div>
+                <img src="{{ url_for('static', filename='mascot.png') }}" 
+                    alt="Status Mascot"
+                    id="mascot"
+                    class="h-auto z-10" >
+        </div>
+    </footer>
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        async function showFlag() {
+            const statusContainer = document.getElementById('status-container');
+            if (!statusContainer) return;
+            
+            const gg = {{ flag | tojson }};
+            const steps = (gg).length;
+
+            const typingSpan = document.createElement('span');
+            
+            typingSpan.innerHTML = gg;
+            
+            typingSpan.classList.add("typing-effect");
+            typingSpan.style.animation = `typing 2s steps(${steps}, end) forwards, blink-caret .75s step-end infinite`;
+
+            statusContainer.innerHTML = '';
+            statusContainer.appendChild(typingSpan);
+
+            setTimeout(() => {
+                if (typingSpan) {
+                    typingSpan.style.borderRight = 'none';
+                }
+            }, 2000); 
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(showFlag, 2000); 
+        });
+    </script>
+{% endblock %}

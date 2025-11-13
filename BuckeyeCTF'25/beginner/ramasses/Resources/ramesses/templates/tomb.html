@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Welcome</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
+  </head>
+  <body>
+    <canvas id="sand-canvas" aria-hidden="true"></canvas>
+    <div class="content">
+      <div class="card">
+        {% if user.is_pharaoh %}
+        <h1>Pharaoh {{ user.name }}</h1>
+        <p>
+          What a happy day! Heaven and earth rejoice, for thou art the great
+          lord of Egypt.
+        </p>
+        <p>All lands say unto him: The flag is {{ flag }}</p>
+        {% else %}
+        <h1>{{ user.name }}</h1>
+        <p>
+          Cursed art thou for a thousand generations, for thou hast entered the
+          tomb of Pharaoh unworthily!
+        </p>
+        {% endif %}
+        <a class="button" href="{{ url_for('logout') }}">Depart</a>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='sand.js') }}" defer></script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Awklet</title>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #0d0d0d;
+      color: #00ff00;
+      padding: 2em;
+      margin: 0;
+    }
+
+    input[type="text"],
+    button {
+      font-family: monospace;
+      background-color: #111111;
+      color: #00ff00;
+      border: 1px solid #00ff00;
+      padding: 1em;
+      margin-bottom: 2em;
+    }
+
+    input[type="text"]:focus,
+    button:focus {
+      outline: none;
+      border-color: #0aff0a;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      accent-color: #00ff00;
+      margin-right: 0.2em;
+      margin-bottom: 0.7em;
+    }
+
+    label {
+      margin-right: 1.5em;
+    }
+
+    fieldset {
+      border: 1px solid #00ff00;
+      padding: 1em;
+      margin: 0;
+      margin-bottom: 2em;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    #output {
+      background-color: #111111;
+      border: 1px solid #00ff00;
+      padding: 1em;
+      white-space: pre-wrap;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Awklet</h1>
+
+  <form hx-get="/cgi-bin/awklet.awk" hx-trigger="change, submit, load" hx-target="#output" hx-swap="innerHTML">
+    <label for="name">Text:</label>
+    <input type="text" id="name" name="name" value="Awklet" required>
+
+    <fieldset>
+      <legend>Font:</legend>
+
+      <label>
+        <input type="radio" name="font" value="standard" checked hx-get="/cgi-bin/awklet.awk" hx-target="#output">
+        Standard
+      </label>
+      <label>
+        <input type="radio" name="font" value="block">
+        Block
+      </label>
+      <label>
+        <input type="radio" name="font" value="slant">
+        Slant
+      </label>
+      <label>
+        <input type="radio" name="font" value="shadow">
+        Shadow
+      </label>
+    </fieldset>
+
+    <button type="submit">Generate ASCII Art</button>
+  </form>
+
+  <div id="output">Response will appear here...</div>
+</body>
+
+</html>

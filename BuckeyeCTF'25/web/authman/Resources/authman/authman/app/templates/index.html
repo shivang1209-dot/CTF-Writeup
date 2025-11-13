@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<style>
+    body {
+        background-image: url("{{ url_for('static', filename='background.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #f0f4f8; 
+        font-family: 'Inter', sans-serif;
+        
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        
+        padding: 1rem; 
+    }
+    .speech-bubble {
+        max-width: none;
+        width: clamp(350px, 35vw, 650px);
+        font-size: clamp(1.75rem, 2.5vw, 2.75rem);
+        line-height: clamp(2.25rem, 3vw, 3.25rem);
+    }
+
+    #mascot {
+        width: clamp(220px, 25vw, 480px);
+        max-width: none;
+    }
+
+    @media (min-width: 640px) {
+        #mascot {
+            max-width: none; 
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body_content %}
+    <main class="flex-grow">
+    </main>
+
+    <footer class="flex-shrink-0 flex justify-center pb-4">
+        <div id="mascot-container" class="flex flex-col items-center">
+            <div class="speech-bubble mb-[-12px] z-20">
+                <div class="text-xl sm:text-2xl mb-2" style="font-family: 'Comic Neue', cursive;">
+                    Welcome to AUTHMAN!
+                </div>
+                <div id="status-container" class="min-h-[2rem]">
+                </div>
+
+            </div>
+            <a href="/auth" target="blank">
+                <img src="{{ url_for('static', filename='mascot.png') }}" 
+                    alt="Status Mascot"
+                    id="mascot"
+                    class="h-auto z-10" >
+            </a>
+        </div>
+    </footer>
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        async function pingAuth() {
+            const res = await fetch("/api/check").then(x => x.json());
+            if (res.status == 200) {
+                return true;
+            } else {
+                return false
+            }
+        }
+
+        async function showStatus(isUp) {
+            const statusContainer = document.getElementById('status-container');
+            if (!statusContainer) return;
+            
+            const textPart1 = "Authentication is ";
+            const textPart2 = isUp ? "UP" : "DOWN (your browser may not work)";
+            const statusClass = isUp ? "status-up" : "status-down";
+            const steps = (textPart1 + textPart2).length;
+
+            const typingSpan = document.createElement('span');
+            
+            typingSpan.innerHTML = `${textPart1}<span class="${statusClass}">${textPart2}</span>`;
+            
+            typingSpan.classList.add("typing-effect");
+            typingSpan.style.animation = `typing 2s steps(${steps}, end) forwards, blink-caret .75s step-end infinite`;
+
+            statusContainer.innerHTML = '';
+            statusContainer.appendChild(typingSpan);
+
+            setTimeout(() => {
+                if (typingSpan) {
+                    typingSpan.style.borderRight = 'none';
+                }
+            }, 2000); 
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const up = pingAuth(); 
+                showStatus(up);
+            }, 2000); 
+        });
+    </script>
+{% endblock %}

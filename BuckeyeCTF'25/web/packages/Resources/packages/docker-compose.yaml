@@ -1,0 +1,7 @@
+services:
+  packages:
+    build: .
+    ports:
+      - 8000:8000
+    environment:
+      - FLAG=bctf{fake_flag}
