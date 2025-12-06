@@ -1,0 +1,121 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Triangle - Log In to get the surprise</title>
+    <link href="bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx">
+    <link href="main.css" rel="stylesheet">
+</head>
+<body class="auth-body text-center">
+<div class="page-wrapper container">
+    <div class="row align-items-center justify-content-center g-5 flex-lg-row-reverse">
+        <div class="col-xl-4 col-lg-5">
+            <main class="form-signin auth-card w-100 m-auto">
+                <div class="logo-badge">
+                    <span class="triangle-icon">△</span>
+                    <span class="badge-text">Triangle</span>
+                </div>
+                <h1 class="h3 mb-3 fw-semibold">Log in to get the surprise</h1>
+
+                <form id="form">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="username" name="username">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="password" name="password">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="otp1" name="otp1">
+                        <label for="otp1">One-time Password (1)</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="otp2" name="otp2">
+                        <label for="otp2">One-time Password (2)</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="otp3" name="otp3">
+                        <label for="otp3">One-time Password (3)</label>
+                    </div>
+
+                    <div class="mb-3 message-holder">
+                        <p id="message"></p>
+                    </div>
+
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                </form>
+
+                <p class="mt-4 mb-0 text-muted small">&copy; The Triangle Services</p>
+            </main>
+        </div>
+        <div class="col-xl-5 col-lg-6">
+            <section class="hero-panel text-lg-start text-center">
+                <p class="eyebrow mb-2">Security without friction</p>
+                <h1 class="display-6 fw-bold mb-3">A cleaner way to reach classified surprises.</h1>
+                <p class="lead text-muted mb-4">Triangle blends layered authentication with sleek design so you can focus on unlocking what matters. Stay confident knowing every request is routed through resilient, enterprise-grade checks.</p>
+                <div class="hero-highlights">
+                    <div class="highlight-card">
+                        <p class="label">Access tier</p>
+                        <p class="value">Zero Trust</p>
+                    </div>
+                    <div class="highlight-card">
+                        <p class="label">Session health</p>
+                        <p class="value text-success">Verified</p>
+                    </div>
+                    <div class="highlight-card">
+                        <p class="label">Uptime</p>
+                        <p class="value">99.95%</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- Dev team 2: TODO: Implement google2fa.php for auth and don't forget to clean up the bak files post debugging before release  -->
+
+<script>
+    let formEl = document.getElementById("form");
+    let messageEl = document.getElementById("message");
+
+    formEl.addEventListener('submit', function (e) {
+        e.preventDefault();
+        document.activeElement.blur();
+        
+        let dataElements = formEl.querySelectorAll("input[name]");
+        dataElements.forEach(e => e.classList.remove("is-invalid"));
+        message.innerText = "Loading";
+        
+        let data = {};
+        dataElements.forEach(e => {
+            let name = e.getAttribute("name");
+            data[name] = e.value;
+        });
+
+
+        fetch("/login.php", {
+            method: "POST",
+            body: JSON.stringify(data),
+        })
+        .then(data => data.json())
+        .then(data => {
+            if (data.error) {
+                let err = new Error(data.error.message);
+                err.data = data.error;
+                throw err;
+            }
+            message.innerText = String(data.message);
+        })
+        .catch(error => {
+            message.innerText = String(error);
+            if (error.data.data) {
+                formEl.querySelectorAll(`*[name="${error.data.data}"]`).forEach(e => e.classList.add("is-invalid"));
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

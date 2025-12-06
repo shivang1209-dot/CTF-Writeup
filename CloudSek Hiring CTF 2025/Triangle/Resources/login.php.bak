@@ -1,0 +1,47 @@
+<?php
+
+require('google2fa.php');
+require('jsonhandler.php');
+
+
+$FLAG = "";
+if (isset($_ENV['FLAG'])) {
+    $FLAG = $_ENV['FLAG'];
+}
+
+$USER_DB = [
+    // Set the initial user
+    "admin" => [
+        "password_hash" => password_hash("admin", PASSWORD_DEFAULT),
+        "key1" => Google2FA::generate_secret_key(),
+        "key2" => Google2FA::generate_secret_key(),
+        "key3" => Google2FA::generate_secret_key()
+    ]
+];
+
+if (isset($_DATA['username'])) {
+    
+    if (!isset($USER_DB[$_DATA['username']])) {
+        json_die('wrong username', 'username');
+    }
+
+    $user_data = $USER_DB[$_DATA['username']];
+
+    if (!password_verify($_DATA['password'], $user_data['password_hash'])) {
+        json_die('wrong password', 'password');
+    }
+
+    if (!Google2FA::verify_key($user_data['key1'], $_DATA['otp1'])) {
+        json_die('wrong otp1', 'otp1');
+    }
+    if (!Google2FA::verify_key($user_data['key2'], $_DATA['otp2'])) {
+        json_die('wrong otp2', 'otp2');
+    }
+    if (!Google2FA::verify_key($user_data['key3'], $_DATA['otp3'])) {
+        json_die('wrong otp3', 'otp3');
+    }
+
+    json_response("Flag: " . $FLAG);
+}
+
+json_response("OK");
