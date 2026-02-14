@@ -2,7 +2,11 @@
 
 ## Description
 
-This event takes place on **ctf.0xfun.org**, but you can easily find it by searching.
+**Category:** OSINT
+
+> This event takes place on **ctf.0xfun.org**, but you can easily find it by searching.
+
+**Flag format:** `0xfun{...}`
 
 ---
 
@@ -24,7 +28,11 @@ The response includes TXT records. One of them contains the flag in plain text:
 ctf.0xfun.org   text = "0xfun{4ny_1nfo_th4ts_pub1cly_4cc3ss1bl3_1s_0S1NT}"
 ```
 
-There may also be a record such as `v=spf1 include:mailgun.org ~all`. The flag is in the first record above.
+---
+
+## Resources
+
+No local files — this is a DNS-based challenge.
 
 ---
 
@@ -33,5 +41,3 @@ There may also be a record such as `v=spf1 include:mailgun.org ~all`. The flag i
 ```
 0xfun{4ny_1nfo_th4ts_pub1cly_4cc3ss1bl3_1s_0S1NT}
 ```
-
----

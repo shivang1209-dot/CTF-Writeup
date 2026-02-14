@@ -2,7 +2,9 @@
 
 ## Description
 
-In the Discord server there's a counting channel. Will you be able to collaborate with other players to reach the goal and retrieve the flag? Good luck!
+**Category:** Misc
+
+> In the Discord server there's a counting channel. Will you be able to collaborate with other players to reach the goal and retrieve the flag? Good luck!
 
 ---
 
@@ -18,7 +20,7 @@ Locate the counting channel and participate with other players to increment the 
 
 ### Step 3: Retrieving the Flag
 
-When the goal is reached, the flag is revealed—for example in a **pinned message** in the counting channel.
+When the goal is reached, the flag is revealed in a **pinned message** in the counting channel.
 
 ![Pinned message with flag](Resources/image.png)
 
@@ -26,7 +28,7 @@ When the goal is reached, the flag is revealed—for example in a **pinned messa
 
 ## Resources
 
-- **[Resources/image.png](Resources/image.png)** — Screenshot of the pinned message with the flag (optional).
+- **[Resources/image.png](Resources/image.png)** — Screenshot of the pinned message with the flag.
 
 ---
 
@@ -35,5 +37,3 @@ When the goal is reached, the flag is revealed—for example in a **pinned messa
 ```
 0xfun{y0u_c4n_c0unt_0n_m3}
 ```
-
----

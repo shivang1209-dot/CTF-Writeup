@@ -2,9 +2,13 @@
 
 ## Description
 
-Take a look at the blog I created! It has a neat backend and, interestingly, seems to use fewer ports.
+**Category:** Warmup
+
+> Take a look at the blog I created! It has a neat backend and, interestingly, seems to use fewer ports.
 
 **Challenge URL:** `http://chall.0xfun.org:56932`
+
+**Flag format:** `0xfun{...}`
 
 ---
 
@@ -12,7 +16,7 @@ Take a look at the blog I created! It has a neat backend and, interestingly, see
 
 ### Step 1: Exploring the Application
 
-The site serves blog pages at paths like `/<TOKEN>/page.html`. A `/name` endpoint returns the blog owner’s name (e.g. "Charlie"). Different tokens lead to different content (e.g. "My Server", Linux container description).
+The site serves blog pages at paths like `/<TOKEN>/page.html`. A `/name` endpoint returns the blog owner's name (e.g. "Charlie"). Different tokens lead to different content.
 
 ### Step 2: Finding the Secret Path
 
@@ -20,11 +24,22 @@ By following links or enumerating tokens, we discover a path that reveals a "sec
 
 ### Step 3: Accessing the Secret Directory
 
-Request the secret path (e.g. a page that links to or reveals `secret_flag_333`). The backend appears to be a minimal Linux environment (e.g. container) with “generic Linux remote access.”
+Request the secret path. The backend appears to be a minimal Linux environment (e.g. container) with "generic Linux remote access."
+
+![Challenge mystery page](Resources/mystery.jpg)
 
 ### Step 4: Reading the Flag
 
-From the secret path we can infer or access a file such as `secret_flag_333/flag.txt` (e.g. via described behavior or direct request). Reading that file yields the flag.
+From the secret path we can access a file such as `secret_flag_333/flag.txt`. Reading that file yields the flag.
+
+![Flag screenshot](Resources/flag.png)
+
+---
+
+## Resources
+
+- **[Resources/mystery.jpg](Resources/mystery.jpg)** — Screenshot of the mystery/blog page.
+- **[Resources/flag.png](Resources/flag.png)** — Screenshot showing the flag.
 
 ---
 
@@ -33,5 +48,3 @@ From the secret path we can infer or access a file such as `secret_flag_333/flag
 ```
 0xfun{p3rsp3c71v3.15.k3y}
 ```
-
----

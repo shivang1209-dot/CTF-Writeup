@@ -2,9 +2,11 @@
 
 ## Description
 
-A frog has escaped from the prison cells of a cybersecurity club and is on the run. Somehow, they've gained the ability to roam the internet and gain human intellect. Their newest adventures are documented online—you need to track them down. The handle is likely along the lines of **@myst3ryfr0gg3r**.
+**Category:** OSINT
 
-You will find the flag already in the format `0xfun{...}`.
+> A frog has escaped from the prison cells of a cybersecurity club and is on the run. Somehow, they've gained the ability to roam the internet and gain human intellect. Their newest adventures are documented online — you need to track them down. The handle is likely along the lines of **@myst3ryfr0gg3r**.
+>
+> You will find the flag already in the format `0xfun{...}`.
 
 ---
 
@@ -12,7 +14,7 @@ You will find the flag already in the format `0xfun{...}`.
 
 ### Step 1: Username Lookup
 
-Use [whatsmyname.app](https://whatsmyname.app/) or similar to search for **myst3ryfr0gg3r**. This leads to an X (Twitter) profile:
+Use [whatsmyname.app](https://whatsmyname.app/) or similar to search for **myst3ryfr0gg3r** ([full results](Resources/myst3ryfr0gg3r.txt)). This leads to an X (Twitter) profile:
 
 ```
 https://x.com/myst3ryfr0gg3r
@@ -20,51 +22,41 @@ https://x.com/myst3ryfr0gg3r
 
 ### Step 2: Finding the GeoOSINT Image
 
-Scroll through the profile. The user posts an image of a restaurant and hints at geoOSINT (e.g. a filename like `@HA40_wza......jpg`).
+Scroll through the profile. The user posts an image of a restaurant and hints at geoOSINT.
 
-![Restaurant image from X profile](Resources/image1.png)
+![Restaurant image from X profile](Resources/twitter-frogg.png)
 
 ### Step 3: Reverse Image Search
 
-Save the image and run a **reverse image search**. One result points to a photo gallery (e.g. [alorenz.photography/gallery](https://www.alorenz.photography/gallery)) and an image such as `@202405-Keep.....webp`.
+Save the image and run a **reverse image search**. One result points to a photo gallery (e.g. [alorenz.photography](https://www.alorenz.photography/gallery)).
 
-![Reverse image search result](Resources/image2.png)
+![Reverse image search result](Resources/photo-site.png)
 
-Searching further with the same image leads to a post such as:
+Searching further leads to a post indicating the location is **The Strand, London**, mentioning a cafe — **Costa**.
 
-`https://x.com/PetrocTrelawny/status/1176972688700661762`
+![Costa location on map](Resources/Costa%20coffee.png)
 
-This indicates the location is **The Strand, London**, and mentions a café name—**Costa**.
+### Step 4: Locating the Restaurant
 
-### Step 4: Locating the Café
+Search for "Costa" and "The Strand" on Google Maps. From the original image, the name **Eve** appears. Searching "Eve Bar, The Strand" gives the precise location — **Frog** restaurant.
 
-Search for "Costa" and "The Strand" (e.g. Google Maps) to find the exact spot.
-
-![Costa location on map](Resources/image3.png)
-
-Example:  
-`https://www.google.com/maps/place/Costa/...`
-
-From the original image, the name **Eve** appears. Searching "Eve Bar, The Strand" gives the precise location (e.g. coordinates, Street View). You can also find **Frog** names restaurant there.
-
-![Eve Bar / Frog location](Resources/image4.png)
+![Frog restaurant location](Resources/Frog_Restaurant.png)
 
 ### Step 5: Finding the Flag
 
-Look at **reviews** for the identified location (e.g. Frog or the specific venue). One review or linked page contains the flag.
-
-Example review link: `https://maps.app.goo.gl/kyBQo11sq7K8oAzQ8`
+Look at **reviews** for the identified location. One review contains the flag.
 
 ---
 
 ## Resources
 
-- **Resources/image1.png** — Restaurant image from the X profile.
-- **Resources/image2.png** — Reverse image search result / gallery reference.
-- **Resources/image3.png** — Costa / location on map.
-- **Resources/image4.png** — Eve Bar / Frog restaurant location.
-
-*(Add your own screenshots to the `Resources` folder and keep the filenames above for the links to work.)*
+- **[Resources/twitter-frogg.png](Resources/twitter-frogg.png)** — Screenshot of the X profile with restaurant image.
+- **[Resources/HA40_wzaYAAq00C.jpg](Resources/HA40_wzaYAAq00C.jpg)** — Original restaurant image from the profile.
+- **[Resources/photo-site.png](Resources/photo-site.png)** — Reverse image search result / gallery reference.
+- **[Resources/202405-Keep+Entrance+Clear-SMALLSQ-B0000759.webp](Resources/202405-Keep+Entrance+Clear-SMALLSQ-B0000759.webp)** — Gallery reference image.
+- **[Resources/Costa coffee.png](Resources/Costa%20coffee.png)** — Costa / location on map.
+- **[Resources/Frog_Restaurant.png](Resources/Frog_Restaurant.png)** — Frog restaurant location.
+- **[Resources/myst3ryfr0gg3r.txt](Resources/myst3ryfr0gg3r.txt)** — Username lookup results across platforms.
 
 ---
 
@@ -73,5 +65,3 @@ Example review link: `https://maps.app.goo.gl/kyBQo11sq7K8oAzQ8`
 ```
 0xfun{n0t_gu3ssy_4t_4ll}
 ```
-
----

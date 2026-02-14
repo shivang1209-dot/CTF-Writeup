@@ -2,11 +2,12 @@
 
 ## Description
 
-**Category:** Reverse Engineering (50 pts)  
+**Category:** Reverse Engineering
+**Points:** 50
 
-*I've created the ultimate number guessing game! Nobody can guess my completely unpredictable numbers. If you can somehow beat these mathematical odds and guess all 5 numbers correctly, I'll give you the flag.*
+> *I've created the ultimate number guessing game! Nobody can guess my completely unpredictable numbers. If you can somehow beat these mathematical odds and guess all 5 numbers correctly, I'll give you the flag.*
 
-**Provided file:** [Resources/guess_the_seed](Resources/guess_the_seed) — stripped Linux ELF 64-bit binary.
+**Provided file:** [guess_the_seed](Resources/guess_the_seed) — stripped Linux ELF 64-bit binary.
 
 **Flag format:** `0xfun{...}`
 
@@ -17,7 +18,7 @@
 ### Step 1: Recon
 
 ```bash
-file guess_the_seed
+file Resources/guess_the_seed
 # ELF 64-bit LSB pie executable, x86-64, dynamically linked, stripped
 ```
 
@@ -28,24 +29,18 @@ file guess_the_seed
 Decompilation shows:
 
 - `srand(time(NULL));`
-- Five values: `rand() % 1000` (each).
+- Five values: `rand() % 1000` each.
 - User input is compared to these five numbers.
 
-So the “secret” numbers are deterministic from the **Unix timestamp** at which the program was run.
+The "secret" numbers are deterministic from the **Unix timestamp** at which the program was run.
 
 ### Step 3: Vulnerability
 
 `time(NULL)` has 1-second resolution and glibc `rand()` is deterministic, so we can **replicate** the sequence by trying nearby timestamps.
 
-### Step 4: Strategy
+### Step 4: Solver Script
 
-1. Replicate glibc `rand()` (same libc as target; use Docker if needed: `linux/amd64`).
-2. For timestamps around “now” (e.g. ±10 seconds), compute `srand(seed)` then five times `rand() % 1000`.
-3. Run the binary and, when it prompts, enter the five numbers from the matching timestamp.
-
-### Step 5: Solver Script
-
-Example (run in an environment with the same libc as the binary, e.g. Docker `ubuntu`):
+Replicate glibc `rand()` (same libc as target; use Docker `ubuntu` if needed):
 
 ```python
 import ctypes
@@ -60,9 +55,9 @@ for delta in range(-10, 11):
     print(f"{delta:+} ->", *nums)
 ```
 
-Run `python3 Resources/solve.py`, then start `./guess_the_seed` and enter the five numbers for the correct time offset (e.g. `+1`).
+Run the solver, then start `./guess_the_seed` and enter the five numbers for the correct time offset.
 
-### Step 6: Result
+### Step 5: Result
 
 When the five numbers match, the program prints the flag.
 
@@ -70,8 +65,7 @@ When the five numbers match, the program prints the flag.
 
 ## Resources
 
-- **[Resources/guess_the_seed](Resources/guess_the_seed)** — Challenge binary.
-- **[Resources/solve.py](Resources/solve.py)** — Script to generate candidate numbers for nearby timestamps (use same arch/libc as target).
+- **[Resources/guess_the_seed](Resources/guess_the_seed)** — Challenge binary (add the file here).
 
 ---
 
@@ -80,5 +74,3 @@ When the five numbers match, the program prints the flag.
 ```
 0xfun{W3l1_7h4t_w4S_Fun_4235328752619125}
 ```
-
----
