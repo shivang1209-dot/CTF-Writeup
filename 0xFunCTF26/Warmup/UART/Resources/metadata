@@ -1,0 +1,10 @@
+[global]
+sigrok version=0.6.0-git-f06f788
+
+[device 1]
+capturefile=logic-1
+total probes=1
+samplerate=1 MHz
+total analog=0
+probe1=uart.ch1
+unitsize=1
